@@ -13,6 +13,6 @@ app.get('/', (req, res) => {
     res.render("index");
 })
 
-app.listen(process.env.port || 8000, () => {
+app.listen(process.env.PORT || 8000, () => {
     console.log('APP IS STARTING')
 })
