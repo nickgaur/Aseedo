@@ -88,7 +88,7 @@
         </div>
         <!-- =========================== Service ============================= -->
         <div class="agreement-container d-flex flex-col">
-            <form action="/signup/businessowner/<%= id %>/agreement" enctype="multipart/form-data" method="POST">
+            <form action="/signup/businessowner/<%= business._id %>/agreement" method="POST" enctype="multipart/form-data">
                 <div class="col d-flex flex-col">
                     <div class="row note">
                         <p class="heading__note"><strong>Note</strong></p>
@@ -103,7 +103,7 @@
                             <label for="video">Upload Video
 
                             </label>
-                            <input type="file" id="video" name="videoAgreement" accept="video/*" required/>
+                            <input type="file" id="video" name="videoAgreement" accept="video/*" required />
                         </div>
                     </div>
                 </div>
@@ -128,14 +128,16 @@
                 <div class="col d-flex flex-col">
                     <div class="row d-flex flex-row align-items-start">
                         <input type="checkbox" id="agreement1" required>
-                        <label for="agreement1" class="agreement-text agreement-text-one">I undertake that I have read the terms & conditions
+                        <label for="agreement1" class="agreement-text agreement-text-one">I undertake that I have read
+                            the terms & conditions
                             in the
                             business associate agreement. In Case i intend to apply as a consultant.</label>
 
                     </div>
                     <div class="row d-flex flex-row align-items-start">
                         <input type="checkbox" id="agreement2" required>
-                        <label for="agreement2" class="agreement-text agreement-text-one"> I completely agree to the said terms & conditions,
+                        <label for="agreement2" class="agreement-text agreement-text-one"> I completely agree to the
+                            said terms & conditions,
                             policies and
                             documents and give my unequivocal, unconditional, absolute consent to the said terms,
                             policies and documents based on which I am willing to register with ASEEDO as business
@@ -143,10 +145,10 @@
                     </div>
                 </div>
                 <div class="next__btn__container d-flex flex-row justify-content-center align-items-center">
-                    <button type="submit"
+                    <button onclick="formSubmitHandler"
                         class="button next-btn d-flex flex-row justify-content-center align-items-center">
                         Sign up
-                </button>
+                    </button>
                 </div>
             </form>
         </div>
@@ -155,8 +157,11 @@
     <!-- =================== Scripts =================== -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="/js/main.js"></script>
     <script src="/js/services/signUpForm.js"></script>
+    <!-- <script src="/js/services/agreement.js"></script> -->
+
     <!-- =============================================== -->
 </body>
 

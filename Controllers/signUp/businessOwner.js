@@ -1,6 +1,5 @@
-const business = require('../../Model/businessOwners/business');
 const businessDetailsModel = require('../../Model/businessOwners/business');
-const { cloudinary } = require('../../cloudinary/videoStorage');
+const sgMail = require('@sendgrid/mail');
 
 module.exports.renderSignupForm = (req, res) => {
     res.render('Services/BusinessOwner/signUpForm');
@@ -34,7 +33,7 @@ module.exports.renderAgreementForm = async (req, res) => {
         if (business) {
             const isAgreed = business.videoAgreement;
             if (!isAgreed) {
-                res.render('Services/BusinessOwner/agreement', { id });
+                res.render('Services/BusinessOwner/agreement', { business });
             }
             else {
                 console.log("You have already signed agreement");
@@ -57,14 +56,32 @@ module.exports.postAgreementForm = async (req, res) => {
     try {
         const business = await businessDetailsModel.findById(id);
         if (business) {
-            const isAgreed = business.videoAgreement;
-            if (!isAgreed) {
+            const isVideoUploaded = business.videoAgreement;
+            if (!isVideoUploaded) {
                const videoAgreement = {
                     url: req.file.path,
                     filename: req.file.filename,
                 };
                 await businessDetailsModel.findByIdAndUpdate(id, { videoAgreement });
-                res.redirect('/signup/businessowner');
+
+                sgMail.setApiKey(process.env.SENDGRID_API_KEY)
+                const msg = {
+                    to: business.email, // Change to your recipient
+                    from: process.env.EMAIL, // Change to your verified sender
+                    subject: 'Verification required for Aseedo',
+                    // text: `hello`,
+                    html: `Click on the link below to verify your Aseedo Account\n http://localhost:8000/verify/${process.env.SERVER_SECRET}/user/${business._id}`,
+                }
+                sgMail
+                    .send(msg)
+                    .then(() => {
+                        console.log('Email sent')
+                    })
+                    .catch((error) => {
+                        console.error(error)
+                    })
+
+                res.status(200).json({status: "Verification Email sent!"});
             }
             else {
                 console.log("You have already signed agreement");
@@ -72,7 +89,7 @@ module.exports.postAgreementForm = async (req, res) => {
             }
         }
         else {
-            console.log(`no business is registered with id: ${id}`);
+            console.log(`No business is registered with id: ${id}`);
             res.json({status: 'Unauthorized',message:`No Business is registered with id: ${id}`});
         }
     }

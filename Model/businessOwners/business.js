@@ -92,6 +92,11 @@ const BusinessOwnerSchema = new Schema({
         type: String,
         trim: true,
     },
+    isVerified: {
+        type: Boolean,
+        default: false,
+        required: true
+    }
 }, { timestamps: true });
 
 
