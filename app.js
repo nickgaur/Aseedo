@@ -15,8 +15,8 @@ const verificationRoutes = require('./routes/verificationRoutes');
 const businessOwnerRoutes = require('./routes/signUp/businessOwner');
 // const MongoStore = require("connect-mongo")(session);
 
-const dbUrl = 'mongodb://localhost:27017/aseedo';     // For development
-// const dbUrl = process.env.DB_URL || 'mongodb://localhost:27017/aseedo'
+// const dbUrl = 'mongodb://localhost:27017/aseedo';     // For development
+const dbUrl = process.env.DB_URL || 'mongodb://localhost:27017/aseedo'
 
 
 main().catch((err) => console.log(err));
@@ -51,6 +51,8 @@ app.use(flash());
 // const sessionConfig = {
 //   store,
 //   name: "session",
+
+
 //   secret,
 //   resave: false,
 //   saveUninitialized: false,

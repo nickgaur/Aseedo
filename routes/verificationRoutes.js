@@ -21,7 +21,7 @@ router
                     from: process.env.EMAIL, // Change to your verified sender
                     subject: 'Verification required for Aseedo',
                     // text: `hello`,
-                    html: `Click on the link below to verify your Aseedo Account\n http://localhost:8000/verify/${process.env.SERVER_SECRET}/user/${business._id}`,
+                    html: `Click on the link below to verify your Aseedo Account\n https://aseedo.herokuapp.com/verify/${process.env.SERVER_SECRET}/user/${business._id}`,
                 }
                 sgMail
                     .send(msg)

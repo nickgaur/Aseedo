@@ -63,25 +63,23 @@ module.exports.postAgreementForm = async (req, res) => {
                     filename: req.file.filename,
                 };
                 await businessDetailsModel.findByIdAndUpdate(id, { videoAgreement });
-
                 sgMail.setApiKey(process.env.SENDGRID_API_KEY)
                 const msg = {
                     to: business.email, // Change to your recipient
                     from: process.env.EMAIL, // Change to your verified sender
                     subject: 'Verification required for Aseedo',
                     // text: `hello`,
-                    html: `Click on the link below to verify your Aseedo Account\n http://localhost:8000/verify/${process.env.SERVER_SECRET}/user/${business._id}`,
+                    html: `Click on the link below to verify your Aseedo Account\n https://aseedo.herokuapp.com/verify/${process.env.SERVER_SECRET}/user/${business._id}`,
                 }
-                sgMail
+                await sgMail
                     .send(msg)
                     .then(() => {
                         console.log('Email sent')
+                        res.status(200).json({status: "Verification Email sent!"});
                     })
                     .catch((error) => {
                         console.error(error)
                     })
-
-                res.status(200).json({status: "Verification Email sent!"});
             }
             else {
                 console.log("You have already signed agreement");
