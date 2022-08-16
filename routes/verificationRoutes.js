@@ -27,11 +27,11 @@ router
                     .send(msg)
                     .then(() => {
                         console.log('Email sent')
+                        res.status(200).redirect(`/verify/${process.env.SERVER_SECRET}/user`);
                     })
                     .catch((error) => {
                         console.error(error)
                     })
-                    res.status(200).redirect(`/verify/${process.env.SERVER_SECRET}/user`);
                 }
                 else {
                     res.redirect(`/verify/${process.env.SERVER_SECRET}/user/${business._id}`);
