@@ -1,0 +1,207 @@
+
+body {
+    background-color: var(--buttonColor);
+    margin-bottom: 50px;
+}
+
+:root {
+    --fadedColor: rgba(27, 27, 35, 0.5);
+    --borderColor: #D6D7EF;
+}
+
+.body__container {
+    margin: auto;
+    width: 100%;
+    max-width: 800px;
+}
+
+
+
+/* ======================= Table of contents =============================== */
+
+
+/* ========================================================================= */
+
+/* ===================
+      1. Capsules
+========================*/
+
+.capsule__box {
+    width: 100%;
+}
+
+.capsule__btn {
+    border-radius: 0.4em;
+    width: 100%;
+    background-color: #fff;
+    padding: 20px 20px;
+    margin-bottom: 20px;
+}
+
+.capsule {
+    /* outline: none; */
+    text-decoration: none;
+    color: var(--headerBackgroundColor);
+}
+
+/* =============================
+        Service Form
+===============================*/
+
+.form {
+    border-radius: 0.4em;
+    width: 100%;
+    background-color: #fff;
+    padding: 40px 5%;
+    margin-bottom: 20px;
+}
+
+label {
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.input {
+    margin-bottom: 20px;
+}
+
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.active-form {
+    display: none;
+}
+
+input {
+    font-size: 15px;
+    width: 100%;
+    padding: 12px 0 12px 20px;
+    border-radius: 8px;
+    border: 1px solid var(--borderColor);
+}
+
+input:focus {
+    outline: none;
+    box-shadow: 2px 2px 6px var(--borderColor);
+}
+
+.next__btn__container {
+    margin-top: 30px;
+}
+
+.next-btn {
+    border-radius: 0.5em;
+    color: var(--headerBackgroundColor);
+    background-color: var(--buttonColor);
+    font-size: 20px;
+    padding: 0.8em 1em;
+    box-shadow: 2px 2px 6px var(--headerBackgroundColor) !important;
+    border: none;
+    cursor: pointer;
+}
+
+.next-btn:focus {
+    box-shadow: 1px 1px 3px var(--headerBackgroundColor) !important;
+}
+
+/* ===============================
+        Responsive CSS
+===================================*/
+
+@media only screen and (min-width: 992px) {
+
+    /* =====================
+            Capsules
+    ======================== */
+    .capsules__container {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #fff;
+        padding: 4vh 22px;
+        border-radius: 0.6em;
+    }
+
+    .capsule {
+        outline: none;
+    }
+
+    .fa-plus,
+    .fa-minus {
+        display: none;
+    }
+
+    .capsule__box {
+        width: 23%;
+        border-radius: 8em;
+    }
+
+    .capsule__btn {
+        border: 1px solid black;
+        justify-content: center;
+        width: 100%;
+        padding: 10px 10px;
+        background-color: var(--stepsBackgroundColor);
+        border-radius: 8em;
+        margin: 0;
+    }
+
+    .faded {
+        color: var(--fadedColor);
+    }
+
+    .btn-text {
+        font-weight: 600;
+        font-size: 20px;
+    }
+
+    .active,
+    .capsule__btn:hover,
+    .capsule:focus .capsule__btn {
+        outline: none;
+        border: 1px solid var(--buttonColor);
+        background-color: var(--buttonColor);
+        transition: background 0.5s;
+    }
+
+    /* =====================
+            Service Form
+    ========================= */
+    .form {
+        display: none;
+    }
+
+    .form-large {
+        width: 100%;
+        background-color: #fff;
+        margin-top: 20px;
+        border-radius: 0.4em;
+        padding: 40px 40px;
+        margin-bottom: 20px;
+    }
+
+    .row {
+        margin-top: 40px;
+    }
+
+    .col {
+        width: 45%;
+    }
+
+    .active-form {
+        display: block;
+    }
+
+    .left {
+        margin-right: 20%;
+    }
+
+    .field {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+}
