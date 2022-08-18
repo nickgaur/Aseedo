@@ -12,10 +12,23 @@
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/services/services.css">
     <link rel="stylesheet" href="/css/services/BusinessOwner/signUpForm.css">
+    <link rel="stylesheet" href="/css/preLoader/preLoader.css">
 
 </head>
 
 <body>
+
+    <!-- ============================ SPINNER ============================ -->
+    <div class="spinner-overlay">
+        <div class="spinner-container">
+            <div class="lds-facebook">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+    </div>
+    <!-- ================================================================= -->
 
     <!-- ================ back to top ================= -->
     <a href="#navbar" class="back-to-top d-flex justify-content-center align-items-center">
@@ -530,8 +543,8 @@
                             </div>
                             <div class="input d-flex flex-col align-items-start discount">
                                 <label for="discount">Discount %</label>
-                                <input type="number" min="1" max="100" id="discount" name="discount" placeholder="Provide Discount"
-                                    required>
+                                <input type="number" min="1" max="100" id="discount" name="discount"
+                                    placeholder="Provide Discount" required>
                             </div>
 
                         </div>
@@ -844,6 +857,15 @@
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="/js/main.js"></script>
     <script src="/js/services/signUpForm.js"></script>
+
+
+    <script>
+        $(document).ready(function () {
+            $("form").on("submit", function () {
+                $(".spinner-overlay").fadeIn();
+            });
+        });
+    </script>
     <!-- =============================================== -->
 </body>
 

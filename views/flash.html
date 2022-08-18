@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    .alert {
+        width: 90%;
+        border: 1px solid black;
+        padding: 8px 20px;
+        margin-top: 50px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .alert-success {
+        background-color: #D6FBDC;
+        border: 1px solid #badbcc;
+        color: #0f5132;
+    }
+    
+    .alert-danger {
+        background-color: #f8d7da;
+        border: 1px solid #f5c2c7;
+        color: #842029;
+    }
+
+    a {
+        cursor: pointer;
+        font-size: 35px;
+    }
+    .hide {
+        display: none;
+    }
+    </style>
+
+<body>
+    
+    
+    <div class="alert alert-success alert-dismissible" role="alert">
+        <div>
+            <i>A</i>
+            sdafhkoiuikfvncxkh
+        </div>
+        <a type="button" class="btn-close success-btn" data-bs-dismiss="alert" aria-label="Close">&times;</a>
+    </div>
+    
+    
+    <div class="alert alert-danger alert-dismissible" role="alert">
+        <div>
+            <i>A</i>
+            adsfklhk
+        </div>
+        <a type="button" class="btn-close danger-btn" data-bs-dismiss="alert" aria-label="Close">&times;</a>
+    </div>
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="../public/js/flash/flash.js"></script>
+</body>
+
+
+</html>

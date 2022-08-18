@@ -37,7 +37,7 @@ module.exports.renderAgreementForm = async (req, res) => {
             }
             else {
                 console.log("You have already signed agreement");
-                res.json({status: "OK", message: "You have already signed Agreement!"});
+                res.json({ status: "OK", message: "You have already signed Agreement!" });
             }
         }
         else {
@@ -58,24 +58,24 @@ module.exports.postAgreementForm = async (req, res) => {
         if (business) {
             const isVideoUploaded = business.videoAgreement;
             if (!isVideoUploaded) {
-               const videoAgreement = {
+                const videoAgreement = {
                     url: req.file.path,
                     filename: req.file.filename,
                 };
                 await businessDetailsModel.findByIdAndUpdate(id, { videoAgreement });
                 sgMail.setApiKey(process.env.SENDGRID_API_KEY)
                 const msg = {
-                    to: business.email, // Change to your recipient
-                    from: process.env.EMAIL, // Change to your verified sender
+                    to: business.email,
+                    from: process.env.EMAIL,
                     subject: 'Verification required for Aseedo',
-                    // text: `hello`,
                     html: `Click on the link below to verify your Aseedo Account\n https://aseedo.herokuapp.com/verify/${process.env.SERVER_SECRET}/user/${business._id}`,
                 }
                 await sgMail
                     .send(msg)
                     .then(() => {
                         console.log('Email sent')
-                        res.status(200).json({status: "Verification Email sent!"});
+                        req.flash('success', `we have sent you verification mail on ${business.email}`);
+                        res.redirect(`/verify/${process.env.SERVER_SECRET}/user`);
                     })
                     .catch((error) => {
                         console.error(error)
@@ -83,12 +83,12 @@ module.exports.postAgreementForm = async (req, res) => {
             }
             else {
                 console.log("You have already signed agreement");
-                res.json({status: "OK", message: "You have already signed Agreement!"});
+                res.json({ status: "OK", message: "You have already signed Agreement!" });
             }
         }
         else {
             console.log(`No business is registered with id: ${id}`);
-            res.json({status: 'Unauthorized',message:`No Business is registered with id: ${id}`});
+            res.json({ status: 'Unauthorized', message: `No Business is registered with id: ${id}` });
         }
     }
     catch (err) {

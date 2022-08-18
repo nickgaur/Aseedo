@@ -17,8 +17,8 @@ router
                 if (!business.isVerified){
                     sgMail.setApiKey(process.env.SENDGRID_API_KEY)
                 const msg = {
-                    to: business.email, // Change to your recipient
-                    from: process.env.EMAIL, // Change to your verified sender
+                    to: business.email,
+                    from: process.env.EMAIL,
                     subject: 'Verification required for Aseedo',
                     // text: `hello`,
                     html: `Click on the link below to verify your Aseedo Account\n https://aseedo.herokuapp.com/verify/${process.env.SERVER_SECRET}/user/${business._id}`,
