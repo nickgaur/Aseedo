@@ -35,9 +35,9 @@ app.use(express.static(__dirname + '/public'));
 // app.use(flash());
 
 // app.configure(function() {
-  // app.use(express.cookieParser('keyboard cat'));
-  // app.use(express.session({ cookie: { maxAge: 60000 }}));
-  const secret = process.env.SERVER_SECRET;
+// app.use(express.cookieParser('keyboard cat'));
+// app.use(express.session({ cookie: { maxAge: 60000 }}));
+const secret = process.env.SERVER_SECRET;
 
 app.use(session({
   secret,
@@ -50,7 +50,7 @@ app.use(session({
     autoRemove: 'native',
   })
 }));
-  app.use(flash());
+app.use(flash());
 // });
 
 

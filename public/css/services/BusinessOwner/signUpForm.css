@@ -81,6 +81,9 @@ input {
     border-radius: 8px;
     border: 1px solid var(--borderColor);
 }
+input[type=file] {
+    padding: 9px 0 9px 20px;
+}
 
 input:focus {
     outline: none;
