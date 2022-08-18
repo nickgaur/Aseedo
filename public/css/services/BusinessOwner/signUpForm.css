@@ -193,7 +193,6 @@ input:focus {
 
     .field {
         flex-direction: row;
-        /* justify-content: space-between; */
     }
 
 }
