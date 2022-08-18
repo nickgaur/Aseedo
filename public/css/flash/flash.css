@@ -20,7 +20,7 @@
     color: #842029;
 }
 
-a {
+.btn-close {
     cursor: pointer;
     font-size: 35px;
 }
