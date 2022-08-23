@@ -1,3 +1,7 @@
+::-webkit-scrollbar {
+    width: 0;
+}
+
 body {
     background-color: var(--buttonColor);
     margin-bottom: 50px;
@@ -74,13 +78,15 @@ input::-webkit-inner-spin-button {
     display: none;
 }
 
-input {
+input,
+.dropdown {
     font-size: 15px;
     width: 100%;
     padding: 12px 0 12px 20px;
     border-radius: 8px;
     border: 1px solid var(--borderColor);
 }
+
 input[type=file] {
     padding: 9px 0 9px 20px;
 }
@@ -93,6 +99,28 @@ input:focus {
 .next__btn__container {
     margin-top: 30px;
 }
+
+.dropdown {
+    padding-right: 20px;
+    position: relative;
+}
+
+.dropdown p {
+    color: gray;
+
+}
+
+.disabled {
+    background-color: #eee;
+}
+
+.disabled p {
+    color: var(--fadedColor);
+}
+
+/* ====================
+        Next btn
+=======================*/
 
 .next-btn {
     border-radius: 0.5em;
@@ -179,6 +207,7 @@ input:focus {
         top: 100%;
         margin-top: 20px;
     }
+
     form {
         margin-top: 30px;
     }
@@ -190,7 +219,9 @@ input:focus {
     .left {
         margin-right: 20px;
     }
-    .left, .right {
+
+    .left,
+    .right {
         width: 50%;
     }
 
@@ -198,4 +229,66 @@ input:focus {
         flex-direction: row;
     }
 
+}
+
+
+
+
+
+
+
+
+
+
+
+/* ========================================= */
+
+
+.dropdown ul {
+    box-sizing: content-box;
+    width: 100%;
+    left: -1px;
+    top: 90%;
+    z-index: 1;
+    text-align: left;
+    height: 200px;
+    background-color: #fff;
+    border: 1px solid var(--borderColor);
+    border-top: none;
+    list-style-type: none;
+    font-size: 15px;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    overflow-y: auto;
+    position: absolute;
+}
+
+.dropdown ul li {
+    cursor: pointer;
+    padding: 12px 0 12px 20px;
+}
+
+.dropdown ul li:hover {
+    background-color: var(--buttonColor);
+}
+
+.cities-list {
+    position: absolute;
+}
+
+.cities {
+    overflow-y: auto;
+}
+
+.d-block {
+    display: block;
+}
+
+.rotate-arrow {
+    transform: rotate(180deg);
+    transition: all 0.2s linear;
+}
+
+.error {
+    color: red;
 }

@@ -1,7 +1,26 @@
 const businessDetailsModel = require('../../Model/businessOwners/business');
 const sgMail = require('@sendgrid/mail');
+const axios = require('axios');
+const bcrypt = require('bcrypt');
 
-module.exports.renderSignupForm = (req, res) => {
+module.exports.renderSignupForm = async (req, res) => {
+    // var config = {
+    //     method: 'get',
+    //     url: 'https://api.countrystatecity.in/v1/countries/IN/cities/MP',
+    //     headers: {
+    //         'X-CSCAPI-KEY': 'SmU5bnJXS3BIaHdrWWdvWGJBTFdwdXhtcWd2dUlxU055N2MwdE5OUw=='
+    //     }
+    // };
+    // axios(config)
+    //     .then(function (response) {
+    //         console.log(JSON.stringify(response.data));
+    //     })
+    //     .catch(function (error) {
+    //         console.log(error);
+    //     });
+    if(req.session.user){
+        return res.redirect(`/profile/${req.session.user._id}/home`);
+    }
     res.render('Services/BusinessOwner/signUpForm');
 }
 
@@ -14,6 +33,7 @@ module.exports.postBusinessOwnerSignUpForm = async (req, res) => {
                 filename: f.filename,
             };
         });
+        formData.password = await bcrypt.hash(formData.password, 10);
         await businessDetailsModel.insertMany(formData);
         const email = formData.email;
         const business = await businessDetailsModel.findOne({ email });
@@ -27,6 +47,9 @@ module.exports.postBusinessOwnerSignUpForm = async (req, res) => {
 }
 
 module.exports.renderAgreementForm = async (req, res) => {
+    if(req.session.user){
+        return res.redirect(`/profile/${req.session.user._id}/home`);
+    }
     const { id } = req.params;
     try {
         const business = await businessDetailsModel.findById(id);
@@ -93,8 +116,6 @@ module.exports.postAgreementForm = async (req, res) => {
     }
     catch (err) {
         console.log(err)
-        res.redirect('/signup/businessowner');
+        res.redirect(`/signup/businessowner/${id}/agreement`);
     }
-
-
 }

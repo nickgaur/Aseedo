@@ -46,14 +46,13 @@ const BusinessOwnerSchema = new Schema({
         type: String,
         trim: true,
         required: true,
+        unique: true,
         minlength: [10, '{VALUE} is not a valid 10 digit number!'],
         maxlength: [10, '{VALUE} is not a valid 10 digit number!'],
     },
-    alternatePhone: {
+    password: {
         type: String,
-        trim: true,
-        minlength: [10, '{VALUE} is not a valid 10 digit number!'],
-        maxlength: [10, '{VALUE} is not a valid 10 digit number!'],
+        required: true,
     },
     shopNumber: {
         type: String,
@@ -88,14 +87,15 @@ const BusinessOwnerSchema = new Schema({
         min: [1, 'Minimum Discount is 1%'],
         max: [100, 'Maximum Discount is 100%']
     },
-    remarks: {
-        type: String,
-        trim: true,
-    },
     isVerified: {
         type: Boolean,
         default: false,
         required: true
+    },
+    type: {
+        type: String,
+        enum: ["business owner"],
+        default: "business owner",
     }
 }, { timestamps: true });
 

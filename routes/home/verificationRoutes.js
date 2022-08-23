@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const businessDetailsModel = require("../Model/businessOwners/business")
+const businessDetailsModel = require("../../Model/businessOwners/business")
 const sgMail = require('@sendgrid/mail')
 
 router
@@ -25,16 +25,16 @@ router
                 }
                 sgMail
                     .send(msg)
-                    .then(() => {
+                    .then((response) => {
                         console.log('Email sent')
-                        res.status(200).redirect(`/verify/${process.env.SERVER_SECRET}/user`);
+                        res.status(200).redirect(`/profile/${business._id}/home`);
                     })
                     .catch((error) => {
                         console.error(error)
                     })
                 }
                 else {
-                    res.redirect(`/verify/${process.env.SERVER_SECRET}/user/${business._id}`);
+                    res.redirect(`/profile/${business._id}/home`);
                 }
 
             }
@@ -58,10 +58,10 @@ router
             const business = await businessDetailsModel.findById(id);
             if (!business.isVerified) {
                 await businessDetailsModel.findByIdAndUpdate(id, { isVerified: true });
-                res.status(200).render("verification/verified")
+                res.status(200).redirect(`/profile/${id}/home`);
             }
             else {
-                res.status(200).render("verification/verified")
+                res.status(200).render(`/profile/${id}/home`);
             }
 
         }
