@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/login/login.css">
 </head>
@@ -75,7 +76,10 @@
 
     <!-- ============================ MAIN ======================== -->
     <div class="container">
-
+        <div class="back__btn__container">
+            <a href="/" class="back__btn"><i class="fa-solid fa-chevron-left"></i>
+                Back</a>
+        </div>
         <div class="form">
             <h3>Login</h3>
             <form action="/login" method="POST">
@@ -91,10 +95,12 @@
                     <a href="#" style="color: #4361EE;font-size:1rem;">Forget Password?</a>
                 </div>
                 <div class="btn-container">
-                    <button type="submit" class="button btn-login d-flex justify-content-center align-items-center">Login</button>
+                    <button type="submit"
+                        class="button btn-login d-flex justify-content-center align-items-center">Login</button>
                 </div>
                 <div class="createNewAccount" style="margin-top: 20px;">
-                    <p class="faded" style="font-size: 0.8rem;">Don't have an account? <a href="#" style="color: #4361EE;" >Create One</a></p>
+                    <p class="faded" style="font-size: 0.8rem;">Don't have an account? <a href="#"
+                            style="color: #4361EE;">Create One</a></p>
 
                 </div>
             </form>

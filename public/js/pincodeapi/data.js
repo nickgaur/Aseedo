@@ -51,26 +51,26 @@ $(".states .datalist li").on("click", async (e) => {
     var selectedState = e.target.innerText;
     $(".state").val(selectedState);
     $(".states p").text(selectedState).css({ color: "black" });
-    // var stateAbbr = states.find(state => state.state === selectedState);
+    var stateAbbr = states.find(state => state.state === selectedState);
     // fetch api for cities
-    // var config = {
-    //     method: 'get',
-    //     url: `https://api.countrystatecity.in/v1/countries/IN/cities/${stateAbbr.abbr}/cities`,
-    //     headers: {
-    //         'X-CSCAPI-KEY': 'SmU5bnJXS3BIaHdrWWdvWGJBTFdwdXhtcWd2dUlxU055N2MwdE5OUw=='
-    //     }
-    // };
-    // const res = await axios.get(`https://api.countrystatecity.in/v1/countries/IN/cities/${stateAbbr.abbr}/cities`, {
-    //     headers: {
-    //         'X-CSCAPI-KEY': 'SmU5bnJXS3BIaHdrWWdvWGJBTFdwdXhtcWd2dUlxU055N2MwdE5OUw=='
-    //     }
-    // })
-        // .then((response) => {
-            //     response.map((city) => {
-            //         $(".cities ul").append(`<li>${city}</li>`);
-            //     })
-            // console.log(res);
-        // })
-        // .catch((error) => { console.log(error) })
+    var config = {
+        method: 'get',
+        url: `https://api.countrystatecity.in/v1/countries/IN/cities/${stateAbbr.abbr}/cities`,
+        headers: {
+            'X-CSCAPI-KEY': 'SmU5bnJXS3BIaHdrWWdvWGJBTFdwdXhtcWd2dUlxU055N2MwdE5OUw=='
+        }
+    };
+    const res = await axios.get(`https://api.countrystatecity.in/v1/countries/IN/cities/${stateAbbr.abbr}/cities`, {
+        headers: {
+            'X-CSCAPI-KEY': 'SmU5bnJXS3BIaHdrWWdvWGJBTFdwdXhtcWd2dUlxU055N2MwdE5OUw=='
+        }
+    })
+        .then((response) => {
+                response.map((city) => {
+                    $(".cities ul").append(`<li>${city}</li>`);
+                })
+            console.log(res);
+        })
+        .catch((error) => { console.log(error) })
 })
 

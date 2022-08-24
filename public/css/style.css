@@ -41,6 +41,23 @@ body {
     margin: 0 auto;
 }
 
+.container .back__btn__container {
+    text-align: left;
+}
+
+.back__btn {
+    text-decoration: none;
+    color: var(--headerBackgroundColor);
+}
+
+.back__btn__container {
+    margin: 20px 0 40px;
+}
+
+.back__btn i {
+    font-size: 20px;
+}
+
 .d-none {
     display: none;
 }

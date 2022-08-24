@@ -17,8 +17,8 @@ const verificationRoutes = require('./routes/home/verificationRoutes');
 const  businessOwnerRoutes = require('./routes/signUp/businessOwner');
 const MongoStore = require("connect-mongo");
 
-// const dbUrl = 'mongodb://localhost:27017/aseedo';     // For development
-const dbUrl = process.env.DB_URL || 'mongodb://localhost:27017/aseedo';
+const dbUrl = 'mongodb://localhost:27017/aseedo';     // For development
+// const dbUrl = process.env.DB_URL || 'mongodb://localhost:27017/aseedo';
 
 
 main().catch((err) => console.log(err));
